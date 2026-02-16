@@ -3,25 +3,26 @@ export default {
   data() {
     return {
       info: 'Hello World',
-      someInfo: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, doloremque.",
-      some:{
-        name: "John Doe",
-        age: 30,
-        city: "New York"
-      }
-    }
+      someInfo: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, doloremque."
   }
 }
+,
+  methods: {
+    userData(word = "John Doe") {
+      this.someInfo = "User data updated!"
+      this.info = "User Name: " + word
+    }
+    
+  }
+  
+}
+
 </script>
 
 <template>
  <h3>{{ info }}</h3>
   <p>{{ someInfo }}</p>
-  <p class="info">Name: {{ some.name }}</p>
-  <p class="info">Age: {{ some.age }}</p>
-  <p class="info">City: {{ some.city }}</p>
-
-
+  <button @click="userData()" @mouseenter="info = 'Mouse Hovered!'">Change Info</button>
 </template>
 
 <style scoped>
