@@ -38,7 +38,24 @@ export default {
   <input type="email" v-model="userEmail" placeholder="Enter your email">
   <p class="error">{{ error }}</p>
   <button @click="sendData()">Submit</button>
-  <p>{{ users }}</p>
+
+
+  <div v-if="users.length === 0" style="margin-top:20px; font-weight:bold; font-size:18px; text-align:center;">
+    NO USERS ADDED YET
+  </div>
+
+  <div v-else-if="users.length === 1" style="margin-top:20px; font-weight:bold; font-size:18px; text-align:center;">
+    ONLY 1 USER ADDED 
+  </div>
+
+  <div v-else style="margin-top:20px; font-weight:bold; font-size:18px; text-align:center;">
+    {{ users.length }} USERS ADDED
+  </div>
+
+  <div v-for="el,index in users" :key="index" className="users">
+    <h3>{{ el.name }}</h3>
+    <p><b>Email:</b> {{ el.email }} - <b>Password:</b> {{ el.password }}</p>
+  </div>
 </template>
 
 <style scoped>
@@ -69,6 +86,21 @@ button{
 
 button:hover{
   opacity:.9;
+}
+
+.users{
+  margin-top:20px;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  flex-direction:column;
+  gap:12px;
+  width:500px;
+  margin:20px auto;
+  border:1px solid #ccc;
+  border-radius:8px;
+  padding:20px;
+  background:#f9f9f9;
+
 }
 
 p{
